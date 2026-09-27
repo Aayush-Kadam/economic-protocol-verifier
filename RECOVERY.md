@@ -4,23 +4,23 @@ Project: Economic Protocol Verifier
 
 Current branch: main
 
-Current HEAD: the commit referenced by annotated tag `m3-counterexample-engine`
+Current HEAD: the commit referenced by annotated tag `m5-cross-domain-semantics`
 
-Latest completed milestone: M3
+Latest completed milestone: M5
 
-Latest milestone tag: m3-counterexample-engine
+Latest milestone tag: m5-cross-domain-semantics
 
-Scientific verdict: M0 PASS WITH NARROWING; M1 PASS; M2 PASS WITH LIMITATIONS; M3 PASS WITH LIMITATIONS
+Scientific verdict: M0 PASS WITH NARROWING; M1 PASS; M2–M5 PASS WITH LIMITATIONS
 
-Tests: full M0-M3 suite; 60 mutants, 360 property evaluations, 180 exact minima; see M3 report
+Tests: 98 passed, 0 failed, 0 skipped; includes all M0–M5 regressions and proof replays
 
-Known blockers: no independent proof checker or theorem prover; not required until M4
+Known blockers: none for bounded M5; voting and broader domains are deferred
 
 Known limitations: finite fragment; counterexample replay shares EIR semantics; M4 V3 proof certificates independently check only the canonical propositional truth table, while economic evaluation/translation remain trusted; direct arithmetic Alethe checking is `holey` and is not V3.
 
 M4 recovery: install the M2 Python extras, build Carcara commit `051d2f79ccd3d5736bb3d93356f05df3dfc696e9` with its pinned Rust toolchain, place it at `.tools/carcara-current`, and run `python -m unittest discover -s tests -v`. The representative bundle is `proofs/second_price_dsic`.
 
-Exact next step: M4 proof-certificate research, only when separately authorized
+Exact next step: M6 only when separately authorized
 
 ## M5 recovery
 
@@ -35,6 +35,14 @@ Latest milestone: M5
 Verdict: PASS WITH LIMITATIONS
 
 Tag: `m5-cross-domain-semantics`
+
+Implementation commit: `88ee18ae32ddd3c4147e71ae6c989ee9d8b2fdb1`
+
+Working tree: clean at release
+
+Tests: 98 passed, 0 failed, 0 skipped
+
+Benchmark cases: 12 total; four per domain; six positive and six negative
 
 Supported domains: auctions; strict one-to-one matching; additive indivisible-goods fair division.
 
