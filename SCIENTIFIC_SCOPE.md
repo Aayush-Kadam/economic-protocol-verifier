@@ -38,3 +38,7 @@ The plausible contribution is not a new theorem prover or a new concept of strat
 ## M5 cross-domain scope
 
 M5 adds strict one-to-one ordinal matching and finite additive-cardinal fair division alongside auctions. Matching comparisons use rank relations only; fair division uses exact nonnegative integers. Voting is deferred. All claims remain bounded to declared instances and report/valuation spaces.
+
+## M6 synthesis scope
+
+M6 searches explicit finite two-bidder auction tables and integer reserve grids. SAT, optimality, repair, and UNSAT statements apply only to the declared allocation family, payment values, normalization, property versions, and prior. No bounded result is promoted to a general impossibility or characterization theorem.

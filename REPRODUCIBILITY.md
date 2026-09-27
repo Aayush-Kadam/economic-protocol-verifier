@@ -19,3 +19,7 @@ M3 counterexample and mutant metrics are reproduced by the full test suite. The 
 ## M5
 
 Run `.venv\Scripts\python.exe -m unittest discover -s tests -v`. This evaluates all three domain reference semantics, cvc5/Z3 differential cases, counterexample replays, applicability attacks, historical M4 bundles, and the two new-domain Carcara bundles. Carcara must be the pinned binary described in `docs/proofs/PROOF_PIPELINE.md`.
+
+## M6
+
+The same command exhaustively replays every tiny synthesis, optimization, repair, MUS, parameter, and severity benchmark, then validates the M6 Carcara bundle. Validate `benchmarks/m6/registry.json` with Python's JSON parser. No network access is required.

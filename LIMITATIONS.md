@@ -6,3 +6,7 @@ M3 counterexample certificates are negative evidence artifacts, not proof certif
 ## M5
 
 Matching is one-to-one with strict complete rankings and a 2x2 canonical strategic domain. Fair division uses additive nonnegative integers, complete deterministic allocations, and small exhaustive alternatives. Voting, many-to-one capacities, ties, randomized mechanisms, EFX, cross-domain EPL 0.2, and large-scale performance are not supported. New V3 certificates check compiled propositional truth tables, not translation correctness.
+
+## M6
+
+Full synthesis is limited to two bidders and tiny finite integer tables. Payments are winner-only with explicit constant loser normalization. Optimization and minimality use exhaustive enumeration, not scalable solver optimization. The bounded impossibility core is intentionally a normalization/bound conflict. Matching/fair-division synthesis, continuous parameters, randomized rules, general perturbation radii, and universal impossibility proofs are excluded.

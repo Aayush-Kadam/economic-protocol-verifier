@@ -22,6 +22,36 @@ M4 recovery: install the M2 Python extras, build Carcara commit `051d2f79ccd3d57
 
 Exact next step: M6 only when separately authorized
 
+## M6 recovery
+
+Project: Economic Protocol Verifier
+
+Repository: `C:\Users\AAYUSH\Documents\Codex\2026-09-27\files-mentioned-by-the-user-economic\outputs\economic-protocol-verifier`
+
+Branch: `main`
+
+HEAD: annotated tag `m6-synthesis-repair`
+
+Working tree: clean at release
+
+Latest milestone: M6
+
+Verdict: PASS WITH LIMITATIONS
+
+Tag: `m6-synthesis-repair`
+
+Tests: 124 passed, 0 failed, 0 skipped
+
+Synthesis benchmark cases: 5
+
+V3 synthesis/impossibility certificates: 1 bounded search-class UNSAT bundle
+
+Synthesis domains: auction only. Search classes: fixed-efficient or all-feasible two-bidder tables with bounded winner payments. Repair metric: changed cells, absolute adjustment, lexical tie-break. Impossibility support: exhaustive bounded-class UNSAT plus Carcara truth-table certificate. Parameter synthesis: integer reserve grids. Approximate metrics: exact manipulation gain, IR shortfall, deficit, welfare loss.
+
+Known limitations: tiny exhaustive classes; trusted synthesis compiler; matching and fair-division synthesis deferred.
+
+Exact next step: M7 only when separately authorized.
+
 ## M5 recovery
 
 Project: Economic Protocol Verifier

@@ -33,3 +33,7 @@ For V2, users additionally trust the IR-to-SMT compiler and solver soundness. Fo
 ## M5 expansion
 
 Matching ranking validation, deferred-acceptance execution, blocking-pair enumeration, fair-division bundle valuation, EF1/Pareto enumeration, and the domain-to-truth-table compilers join the trusted base. cvc5/Z3 agreement detects backend discrepancies but not a shared evaluator error. New V3 proofs remove trust in cvc5's UNSAT answer only; Carcara and each economic translation remain trusted.
+
+## M6 synthesis
+
+The synthesis-problem compiler, table enumerator, candidate decoder, membership checks, objective/prior evaluator, repair-distance evaluator, minimal-core validator, and status interpreter are trusted. Every SAT candidate is passed through normal property evaluators. Exhaustive enumeration independently establishes the reported tiny-domain optima and repair minima. Carcara checks only the compiled bounded-UNSAT truth table, not completeness of candidate enumeration or economic translation.

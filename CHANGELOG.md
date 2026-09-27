@@ -40,3 +40,9 @@
 - Added strict ordinal one-to-one matching and additive indivisible-goods fair division.
 - Added eight domain-specific properties, applicability enforcement, domain/version hashes, replayable counterexamples, 12 cross-domain benchmarks, solver differential checks, and two new V3 bundles.
 - Explicitly deferred voting and EPL 0.2.
+# M6
+
+- Added canonical finite auction synthesis problems/results and exhaustive candidate post-verification.
+- Added exact revenue optimization, payment-only repair, bounded UNSAT, MUS extraction, reserve synthesis, and severity metrics.
+- Added five synthesis benchmarks and a Carcara-accepted bounded-impossibility certificate.
+- Deferred matching/fair-division synthesis and scalable optimization.

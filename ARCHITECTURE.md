@@ -31,3 +31,7 @@ docs/{adr,literature,milestones}
 ## M5 domain architecture
 
 Shared infrastructure consists of grounded witness problems, cvc5/Z3 adapters, provenance, counterexample binding, and Alethe validation. `matching.py` and `fair_division.py` retain separate semantic objects and evaluators. `property_registry.py` enforces domain applicability. No universal utility abstraction is introduced.
+
+## M6 synthesis architecture
+
+`synthesis.py` defines canonical problem/result records, finite candidate enumeration, EIR decoding, post-verification, objective evaluation, repair, MUS enumeration, and reserve search. `robustness.py` independently enumerates global finite-domain severity metrics. Proof infrastructure is reused only after exact candidate-validity truth values are materialized.

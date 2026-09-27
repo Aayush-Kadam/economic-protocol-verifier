@@ -1,0 +1,21 @@
+{
+  "assurance": "V3_BOUNDED",
+  "checker": {
+    "name": "carcara",
+    "required_result": "valid",
+    "version": "carcara 1.1.0 [git 051d2f7]"
+  },
+  "domain_family": "auction_synthesis",
+  "domain_semantics_version": "epv.synthesis.auction_table.v1",
+  "epv_commit": "c323862bb0b0e7346743195b1b477a3222a5fcbf",
+  "logical_problem_hash": "sha256:46ff6453fe49a84927731b62fdab80c847edf4a4f87001d34ccc64a08c4aeedc",
+  "mechanism_hash": "sha256:ce898c3d5f329bd42d9bbe20a57e68e48a8e9c0de7c9e1d5a086be906122f019",
+  "producer": {
+    "name": "cvc5",
+    "version": "1.4.1"
+  },
+  "proof_format": "alethe",
+  "proof_hash": "sha256:91680036134311685f244979a46989d185e74773737de21c75dcf3dafa172312",
+  "property_id": "epv.auction.synthesis.exists.v1",
+  "schema": "epv-domain-proof-certificate-v1"
+}

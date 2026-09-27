@@ -99,7 +99,7 @@ def generate_alethe(problem: bytes) -> bytes:
     s = cvc5.Solver(); s.setLogic("QF_UF")
     for k, v in {"produce-proofs":"true", "proof-format-mode":"alethe", "simplification":"none", "dag-thresh":"0", "proof-granularity":"theory-rewrite"}.items(): s.setOption(k, v)
     terms = [s.mkConst(s.getBooleanSort(), n) for n in vals]
-    s.assertFormula(s.mkTerm(Kind.OR, *terms))
+    s.assertFormula(terms[0] if len(terms) == 1 else s.mkTerm(Kind.OR, *terms))
     for t, value in zip(terms, truths, strict=True): s.assertFormula(t if value else s.mkTerm(Kind.NOT, t))
     result = s.checkSat()
     if not result.isUnsat(): raise ValueError(f"proof exists only for UNSAT, got {result}")
