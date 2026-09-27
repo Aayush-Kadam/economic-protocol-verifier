@@ -1,0 +1,921 @@
+{
+  "assumptions": [
+    {
+      "detail": "each type is the bidder's value for one item",
+      "name": "private_values"
+    },
+    {
+      "detail": "utility equals value of allocation minus payment",
+      "name": "quasi_linear"
+    }
+  ],
+  "assurance": "V3_BOUNDED",
+  "checker": {
+    "name": "carcara",
+    "required_result": "valid",
+    "version": "carcara 1.1.0 [git 051d2f7]"
+  },
+  "domain": {
+    "arithmetic": "exact-rational",
+    "report_spaces": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "type_spaces": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ]
+  },
+  "epv_commit": "b044d4eb66f8ed03832838a873f158b3318a2ed8",
+  "logical_problem_hash": "sha256:9c52f425a19ac2d72789dce2005580b634cf18db11e7f531114fa3079037e1f6",
+  "mechanism": {
+    "agents": [
+      "bidder-0",
+      "bidder-1"
+    ],
+    "arithmetic": "exact-rational",
+    "assumptions": [
+      {
+        "detail": "each type is the bidder's value for one item",
+        "name": "private_values"
+      },
+      {
+        "detail": "utility equals value of allocation minus payment",
+        "name": "quasi_linear"
+      }
+    ],
+    "declared_allocations": [
+      {
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "feasible": true
+      },
+      {
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "feasible": true
+      },
+      {
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "feasible": true
+      }
+    ],
+    "name": "second-price auction",
+    "outside_options": [
+      {
+        "denominator": 1,
+        "numerator": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      }
+    ],
+    "report_spaces": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "rule_table": [
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "label": "winner:0",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          "label": "winner:1",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          "label": "winner:1",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 2
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "label": "winner:0",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "label": "winner:0",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          "label": "winner:1",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 2
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "label": "winner:0",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 2
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "label": "winner:0",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 2
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ]
+      },
+      {
+        "outcome": {
+          "allocation": [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "label": "winner:0",
+          "transfers": [
+            {
+              "denominator": 1,
+              "numerator": 2
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        },
+        "reports": [
+          {
+            "denominator": 1,
+            "numerator": 2
+          },
+          {
+            "denominator": 1,
+            "numerator": 2
+          }
+        ]
+      }
+    ],
+    "schema": "epv-eir-0.1",
+    "tie_breaking": "lowest agent index wins equal bids",
+    "type_spaces": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "valuation_table": [
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 1
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 2
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 2
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 0,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 2
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 2
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 1
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 2
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 2
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 2
+        }
+      },
+      {
+        "agent": 1,
+        "allocation": [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "true_type": {
+          "denominator": 1,
+          "numerator": 2
+        },
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      }
+    ]
+  },
+  "mechanism_hash": "sha256:36e5a80cee0d610f1eaee7d6bc794625bbfd2b89a91a15a44c9c2d77ea4867b9",
+  "producer": {
+    "name": "cvc5",
+    "version": "1.4.1"
+  },
+  "proof_format": "alethe",
+  "proof_hash": "sha256:9342b3114ed3fff3312ccac4a301fc8789556eddecdd02bb488a3acce31bd7bf",
+  "property": "allocative_efficiency",
+  "property_version": "finite-exact-v1",
+  "schema": "epv-proof-certificate-v1"
+}
