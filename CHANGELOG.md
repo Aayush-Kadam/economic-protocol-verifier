@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0-m2
+
+- Added strict, source-located EPL 0.1 parsing and semantic validation.
+- Added EPL-to-M1-EIR equivalence tests and source/semantic hash separation.
+- Added versioned grounded witness compilation for all six properties.
+- Added independent cvc5 and Z3 AST adapters and fail-closed status conversion.
+- Added three-way differential validation and solver-witness replay.
+
 ## 0.1.0-m1
 
 - Added immutable finite EIR and exact-rational arithmetic.

@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "Auditable verification of finite economic mechanisms"
 requires-python = ">=3.12"
 
+[project.optional-dependencies]
+m2 = ["cvc5==1.4.1", "z3-solver==5.1.0.0"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
-

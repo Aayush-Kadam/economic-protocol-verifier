@@ -1,4 +1,3 @@
 # Limitations
 
-M0 contains a scoped design and literature audit, not working verification software. The search is current and broad but cannot prove nonexistence of an overlapping unpublished or poorly indexed system. Certificate compatibility has not been tested locally. No result about a mechanism has yet been established by EPV.
-
+EPV supports only two-agent, single-indivisible-item, deterministic direct mechanisms over bounded integer domains. EPL 0.1 has four allocation/payment templates rather than general expressions. SMT obligations are finite grounded QF_LRA disjunctions and share EIR evaluation with the compiler. No certificate, symbolic real theorem, randomization, Bayesian semantics, cross-domain model, or implementation conformance is supported.

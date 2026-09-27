@@ -8,6 +8,8 @@ Use a small Python 3.12 package first, not the full proposed monorepo. Layers ar
 
 The reference enumerator and semantic evaluator precede SMT integration. A web application is deferred until M8.
 
+M2 adds strict JSON EPL, source-located syntax/semantic errors, a frozen AST, EIR elaboration, a solver-neutral grounded witness IR, separate cvc5/Z3 AST translators, and independent witness replay. The grounded compiler is deliberately finite and does not establish symbolic real-domain theorems.
+
 ## Initial layout
 
 ```text
@@ -25,4 +27,3 @@ docs/{adr,literature,milestones}
 - Alethe/Carcara experiment in M4: no blanket V3 promise because theory coverage is partial and Carcara is not formally verified.
 - Lean 4 deferred as the likely single theorem-prover experiment: active ecosystem and small proof-checking kernel, but integration cost and recent kernel soundness fixes require pinned versions and adversarial validation. Isabelle remains especially relevant prior art and a possible reconstruction target.
 - YAML-like syntax deferred until semantic IR stabilizes; canonical JSON is the interchange and hash surface.
-

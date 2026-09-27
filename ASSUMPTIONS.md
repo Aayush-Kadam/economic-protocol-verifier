@@ -14,3 +14,4 @@ Initial assumptions are explicit declarations, not inferred defaults:
 
 An omitted relevant assumption is a semantic error, not a reason to guess.
 
+EPL 0.1 requires exactly `private_values` and `quasi_linear`; arbitrary assumptions are rejected rather than ignored.

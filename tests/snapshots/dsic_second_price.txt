@@ -1,0 +1,8 @@
+schema: epv-witness-problem-0.1
+mechanism: examples/second_price.epl
+property: epv.property.dsic.v1
+domain: two agents; true types and reports are integers in [0,2]
+case_count: 54
+problem_hash: sha256:a89212907a9003e3ad79e7585ff4389fc0bb843ea709ba7c5488dec8d0b7ec34
+expected: UNSAT
+

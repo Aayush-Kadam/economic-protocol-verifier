@@ -1,0 +1,52 @@
+{
+  "schema": "epv-epl-0.1",
+  "protocol": "subsidized allocation",
+  "agents": {
+    "count": 2,
+    "prefix": "bidder"
+  },
+  "types": {
+    "integer": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  "reports": {
+    "integer": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  "resource": {
+    "kind": "single_indivisible",
+    "capacity": 1
+  },
+  "allocation": {
+    "rule": "highest_report",
+    "tie_break": "lowest_id"
+  },
+  "payments": {
+    "rule": "winner_subsidy_one",
+    "sign": "agent_pays_mechanism"
+  },
+  "utility": {
+    "rule": "quasi_linear_private_value"
+  },
+  "feasibility": {
+    "rule": "single_item_capacity"
+  },
+  "outside_option": 0,
+  "assumptions": [
+    "private_values",
+    "quasi_linear"
+  ],
+  "verify": [
+    "dsic",
+    "ex_post_ir",
+    "weak_budget_balance",
+    "strong_budget_balance",
+    "feasibility",
+    "allocative_efficiency"
+  ]
+}
+

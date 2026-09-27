@@ -21,6 +21,8 @@ def _single_item_base(name: str, values: tuple[int, ...], payment_rule: str) -> 
             transfers[winner] = reports[winner]
         elif payment_rule == "subsidy":
             transfers[winner] = -1
+        elif payment_rule == "zero":
+            pass
         else:
             raise ValueError(payment_rule)
         return Outcome(f"winner:{winner}", allocation, tuple(transfers))
@@ -61,8 +63,8 @@ def deficit_auction(values: tuple[int, ...] = (0, 1)) -> DeterministicDirectMech
     return _single_item_base("subsidized allocation", values, "subsidy")
 
 
-def double_allocation_mechanism() -> DeterministicDirectMechanism:
-    base = _single_item_base("double allocation mutant", (0, 1), "second-price")
+def double_allocation_mechanism(values: tuple[int, ...] = (0, 1)) -> DeterministicDirectMechanism:
+    base = _single_item_base("double allocation mutant", values, "second-price")
 
     def rule(reports: tuple[Fraction, ...]) -> Outcome:
         return Outcome("both-win", Allocation((1, 1)), (0, 0))
@@ -80,3 +82,16 @@ def double_allocation_mechanism() -> DeterministicDirectMechanism:
         outside_options=base.outside_options,
     )
 
+
+def always_agent_zero_mechanism(values: tuple[int, ...] = (0, 1, 2)) -> DeterministicDirectMechanism:
+    base = _single_item_base("always_agent_zero", values, "zero")
+
+    def rule(reports: tuple[Fraction, ...]) -> Outcome:
+        return Outcome("always-0", Allocation((1, 0)), (0, 0))
+
+    return DeterministicDirectMechanism(
+        name=base.name, agents=base.agents, domain=base.domain, rule=rule, value=base.value,
+        feasible=base.feasible, feasible_allocations=base.feasible_allocations,
+        assumptions=base.assumptions, tie_breaking="not applicable; fixed allocation",
+        outside_options=base.outside_options,
+    )

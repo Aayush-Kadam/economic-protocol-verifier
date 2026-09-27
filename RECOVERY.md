@@ -4,26 +4,26 @@ Project: Economic Protocol Verifier
 
 Current branch: main
 
-Current HEAD: the commit referenced by annotated tag `m1-formal-kernel`
+Current HEAD: the commit referenced by annotated tag `m2-epl-semantic-compiler`
 
-Latest completed milestone: M1
+Latest completed milestone: M2
 
-Latest milestone tag: m1-formal-kernel
+Latest milestone tag: m2-epl-semantic-compiler
 
-Scientific verdict: M0 PASS WITH NARROWING; M1 PASS
+Scientific verdict: M0 PASS WITH NARROWING; M1 PASS; M2 PASS WITH LIMITATIONS
 
-Tests: kernel, six properties, canonical benchmarks, exact arithmetic, provenance hash, and witness replay; see M1 report
+Tests: full M0-M2 suite plus 36 three-way differential comparisons and 20 solver-witness replays; see M2 report
 
-Known blockers: no local SMT solver, independent checker, or theorem prover detected; M2 SMT work requires a backend decision or dependency installation
+Known blockers: no independent proof checker or theorem prover; not required until M4
 
-Known limitations: finite deterministic direct mechanisms only; V1 bounded assurance; no parser or solver certificates
+Known limitations: EPL 0.1 is two-agent/single-item/template-based; finite grounding; V1/V2 bounded assurance; no certificates
 
-Exact next step: define and validate EPL for the M1 fragment, then prove compiler/backend agreement against enumeration
+Exact next step: M3 counterexample correctness/minimization work, only when separately authorized
 
 Commands to reproduce current state:
 
 ```powershell
-python -m unittest discover -s tests -v
+.venv\Scripts\python.exe -m unittest discover -s tests -v
 python -m json.tool docs/literature/sources.json > $null
 git status --short
 ```
