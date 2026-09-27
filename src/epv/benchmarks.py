@@ -51,6 +51,26 @@ def second_price_auction(values: tuple[int, ...] = (0, 1, 2)) -> DeterministicDi
     return _single_item_base("second-price auction", values, "second-price")
 
 
+def n_bidder_second_price_auction(n: int, values: tuple[int, ...] = (0, 1, 2)) -> DeterministicDirectMechanism:
+    if n < 2:
+        raise ValueError("a Vickrey auction requires at least two bidders")
+    agents = tuple(Agent(f"bidder-{i}") for i in range(n)); space = tuple(Fraction(v) for v in values)
+    domain = VerificationDomain(tuple(space for _ in agents), tuple(space for _ in agents))
+    feasible_allocations = (Allocation(tuple(Fraction(0) for _ in agents)),) + tuple(
+        Allocation(tuple(Fraction(i == winner) for i in range(n))) for winner in range(n))
+    def rule(reports):
+        winner = min(range(n), key=lambda i: (-reports[i], i))
+        second = sorted(reports, reverse=True)[1]
+        transfers = tuple(second if i == winner else Fraction(0) for i in range(n))
+        return Outcome(f"winner:{winner}", Allocation(tuple(Fraction(i == winner) for i in range(n))), transfers)
+    def value(agent, theta, allocation): return theta * allocation.quantities[agent]
+    return DeterministicDirectMechanism(
+        f"{n}-bidder second-price auction", agents, domain, rule, value,
+        lambda a: sum(a.quantities, Fraction(0)) <= 1, feasible_allocations,
+        (Assumption("private_values", "each type is the bidder's value for one item"), Assumption("quasi_linear", "utility equals value minus payment")),
+        "highest report; lowest agent index wins ties", tuple(Fraction(0) for _ in agents))
+
+
 def first_price_auction(values: tuple[int, ...] = (0, 1, 2)) -> DeterministicDirectMechanism:
     return _single_item_base("first-price auction", values, "first-price")
 

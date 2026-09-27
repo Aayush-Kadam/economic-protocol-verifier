@@ -34,3 +34,9 @@
 - Added canonical finite truth-table proof obligations, cvc5 Alethe production, and fail-closed Carcara validation.
 - Added `epv-proof-certificate-v1`, a committed second-price DSIC proof bundle, adversarial binding tests, and M4 trust/support documentation.
 - Established restricted V3 bounded assurance; direct QF_LIRA checking remains unsupported because Carcara reports `holey`.
+# M5
+
+- Added N-bidder Vickrey benchmarks without changing EPL 0.1 or historical hashes.
+- Added strict ordinal one-to-one matching and additive indivisible-goods fair division.
+- Added eight domain-specific properties, applicability enforcement, domain/version hashes, replayable counterexamples, 12 cross-domain benchmarks, solver differential checks, and two new V3 bundles.
+- Explicitly deferred voting and EPL 0.2.

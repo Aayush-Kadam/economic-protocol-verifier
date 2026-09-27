@@ -15,3 +15,7 @@ Initial assumptions are explicit declarations, not inferred defaults:
 An omitted relevant assumption is a semantic error, not a reason to guess.
 
 EPL 0.1 requires exactly `private_values` and `quasi_linear`; arbitrary assumptions are rejected rather than ignored.
+
+## M5 domains
+
+Matching assumes two disjoint sides, unit capacity, strict complete rankings including unmatched, deterministic proposer order, and explicit proposing side. Fair division assumes indivisible goods, additive nonnegative integer values, complete allocation, deterministic picking order, and declared good-order tie-breaking.

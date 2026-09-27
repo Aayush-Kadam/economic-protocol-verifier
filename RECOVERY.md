@@ -22,6 +22,28 @@ M4 recovery: install the M2 Python extras, build Carcara commit `051d2f79ccd3d57
 
 Exact next step: M4 proof-certificate research, only when separately authorized
 
+## M5 recovery
+
+Project: Economic Protocol Verifier
+
+Repository: `C:\Users\AAYUSH\Documents\Codex\2026-09-27\files-mentioned-by-the-user-economic\outputs\economic-protocol-verifier`
+
+Branch: `main`
+
+Latest milestone: M5
+
+Verdict: PASS WITH LIMITATIONS
+
+Tag: `m5-cross-domain-semantics`
+
+Supported domains: auctions; strict one-to-one matching; additive indivisible-goods fair division.
+
+V1/V2 cover the documented new-domain property matrix. V3 covers bounded matching stability and bounded fair-division EF1. Known limitations include trusted translation, 2x2 canonical matching, small fair-division instances, and deferred voting.
+
+Exact next step: M6 only when separately authorized.
+
+Reproduce with `.venv\Scripts\python.exe -m unittest discover -s tests -v`, then verify `git status --short` and replay the proof tests with pinned Carcara.
+
 Commands to reproduce current state:
 
 ```powershell

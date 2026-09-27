@@ -29,3 +29,7 @@ For V2, users additionally trust the IR-to-SMT compiler and solver soundness. Fo
 - every witness is replayed;
 - every artifact binds source, canonical IR, property version, formula, solver configuration, and checker result by hashes;
 - UI labels are derived from machine status and cannot upgrade assurance.
+
+## M5 expansion
+
+Matching ranking validation, deferred-acceptance execution, blocking-pair enumeration, fair-division bundle valuation, EF1/Pareto enumeration, and the domain-to-truth-table compilers join the trusted base. cvc5/Z3 agreement detects backend discrepancies but not a shared evaluator error. New V3 proofs remove trust in cvc5's UNSAT answer only; Carcara and each economic translation remain trusted.

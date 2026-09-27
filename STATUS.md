@@ -10,3 +10,5 @@
 # Current status
 
 M4: **PASS WITH LIMITATIONS**. A hash-bound Alethe certificate for bounded second-price-auction DSIC is independently accepted by pinned Carcara. V3 is restricted to the canonical finite propositional truth-table fragment; direct arithmetic proofs remain unsupported (`holey`). See `docs/milestones/M4.md`.
+
+M5: **PASS WITH LIMITATIONS**. Supported domains are auctions, strict one-to-one matching, and additive indivisible-goods fair division. Matching stability and fair-division EF1 have fresh bounded V3 certificates. Voting is deferred.

@@ -15,3 +15,7 @@ git status --short
 For M2 use `.venv\Scripts\python.exe` so both solver bindings are present.
 
 M3 counterexample and mutant metrics are reproduced by the full test suite. The corpus is deterministic and has no external data dependency.
+
+## M5
+
+Run `.venv\Scripts\python.exe -m unittest discover -s tests -v`. This evaluates all three domain reference semantics, cvc5/Z3 differential cases, counterexample replays, applicability attacks, historical M4 bundles, and the two new-domain Carcara bundles. Carcara must be the pinned binary described in `docs/proofs/PROOF_PIPELINE.md`.

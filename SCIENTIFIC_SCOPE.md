@@ -35,3 +35,6 @@ M1 excludes randomized mechanisms, Bayesian properties, continuous/unbounded dom
 
 The plausible contribution is not a new theorem prover or a new concept of strategy-proofness. It is an integrated, fail-closed workflow combining a readable economic specification, typed canonical IR, property-to-witness compilation, exhaustive oracle comparison, replayable economic counterexamples, explicit assumption/provenance manifests, and independently checked solver evidence where the proof format supports the exact theory.
 
+## M5 cross-domain scope
+
+M5 adds strict one-to-one ordinal matching and finite additive-cardinal fair division alongside auctions. Matching comparisons use rank relations only; fair division uses exact nonnegative integers. Voting is deferred. All claims remain bounded to declared instances and report/valuation spaces.

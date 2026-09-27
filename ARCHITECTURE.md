@@ -27,3 +27,7 @@ docs/{adr,literature,milestones}
 - Alethe/Carcara experiment in M4: no blanket V3 promise because theory coverage is partial and Carcara is not formally verified.
 - Lean 4 deferred as the likely single theorem-prover experiment: active ecosystem and small proof-checking kernel, but integration cost and recent kernel soundness fixes require pinned versions and adversarial validation. Isabelle remains especially relevant prior art and a possible reconstruction target.
 - YAML-like syntax deferred until semantic IR stabilizes; canonical JSON is the interchange and hash surface.
+
+## M5 domain architecture
+
+Shared infrastructure consists of grounded witness problems, cvc5/Z3 adapters, provenance, counterexample binding, and Alethe validation. `matching.py` and `fair_division.py` retain separate semantic objects and evaluators. `property_registry.py` enforces domain applicability. No universal utility abstraction is introduced.
