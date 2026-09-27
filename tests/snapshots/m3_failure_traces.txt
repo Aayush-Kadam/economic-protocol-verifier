@@ -1,0 +1,6 @@
+first-price DSIC: agent=0 true=1 truthful_report=1 deviation=0 truthful_utility=0 deviation_utility=1 gain=1
+subsidized WBB: reports=(0,0) transfers=(-1,0) balance=-1 kind=deficit violation=1
+double-allocation feasibility: reports=(0,0) allocation=(1,1) capacity=1 total=2 excess=1
+always-agent-zero efficiency: types=(0,1) chosen=(1,0) welfare=0 alternative=(0,1) welfare=1 improvement=1
+second-price SBB: reports=(1,1) transfers=(1,0) balance=1 kind=surplus violation=1
+

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0-m3
+
+- Added six typed economic witness payloads and versioned counterexample certificates.
+- Added immediate replay, exact exhaustive minimization, canonical JSON/hashing, and deterministic traces.
+- Added cross-backend canonical-minimum comparison and tampering rejection.
+- Added a 60-mechanism systematic mutant corpus and 360-case property matrix.
+
 ## 0.2.0-m2
 
 - Added strict, source-located EPL 0.1 parsing and semantic validation.

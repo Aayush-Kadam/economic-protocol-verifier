@@ -13,3 +13,5 @@ git status --short
 ```
 
 For M2 use `.venv\Scripts\python.exe` so both solver bindings are present.
+
+M3 counterexample and mutant metrics are reproduced by the full test suite. The corpus is deterministic and has no external data dependency.

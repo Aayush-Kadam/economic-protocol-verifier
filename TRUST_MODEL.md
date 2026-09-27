@@ -16,6 +16,8 @@ The exhaustive backend is not called independent if it shares the same evaluator
 
 M2 solver adapters translate a shared neutral witness IR separately, but the compiler grounds mechanism behavior through the same EIR evaluator. Three-way agreement detects many translation defects but cannot exclude a common EIR/compiler error. V2 therefore remains bounded and translation-dependent.
 
+M3 adds solver-case decoding, typed witness construction, exact minimization, canonical certificate serialization, validation, and rendering. Decoder/minimizer/serializer correctness is tested and remains trusted. Replay uses the M1 evaluator rather than backend expressions, but compilation and replay still share EIR semantics. The renderer is untrusted presentation: only certificate validation and replay establish the violation.
+
 ## Later solver path
 
 For V2, users additionally trust the IR-to-SMT compiler and solver soundness. For V3, an independently implemented checker must accept a proof for the exact hash-bound SMT formula. The checker itself remains in the TCB unless formally verified. cvc5 documentation states that Alethe output supports only parts of arithmetic and quantifiers; therefore certificate availability must be established experimentally per formula, not inferred from `unsat`.
