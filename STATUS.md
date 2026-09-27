@@ -1,10 +1,9 @@
 # Status
 
 - Project: Economic Protocol Verifier
-- Milestone: M0 complete
-- Verdict: PASS WITH NARROWING
+- Milestone: M1 complete
+- Verdict: PASS (within the M0-narrowed fragment)
 - Scientific thesis retained: a usable, auditable integration for bounded deterministic direct mechanisms may be valuable.
 - Broad novelty claim rejected: formal verification and synthesis of mechanisms are established.
-- Implementation status: no verification engine yet; M1 is next.
-- Release status: research prototype planning only; not ready for external claims.
-
+- Implementation status: finite exhaustive reference kernel with six properties and replayable DSIC witnesses.
+- Release status: bounded research kernel only; not ready for external claims.
