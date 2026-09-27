@@ -77,13 +77,19 @@ def _pairs_no_duplicates(text: str, filename: str):
 
 
 def parse_epl(text: str, filename: str = "<memory>") -> ProtocolAST:
+    if not isinstance(text, str):
+        raise EPLError("TypeError", "EPL source must be text", SourceLocation(filename, 1, 1))
+    if len(text.encode("utf-8")) > 1_000_000:
+        raise EPLError("ResourceLimit", "EPL source exceeds 1,000,000 bytes", SourceLocation(filename, 1, 1))
     try:
         raw = json.loads(text, object_pairs_hook=_pairs_no_duplicates(text, filename), parse_float=lambda value: (_error(
             text, filename, value, "UnsupportedNumericType", "floating-point literals are forbidden"
         )))
     except EPLError:
         raise
-    except json.JSONDecodeError as exc:
+    except (json.JSONDecodeError, RecursionError) as exc:
+        if isinstance(exc, RecursionError):
+            raise EPLError("ResourceLimit", "JSON nesting is too deep", SourceLocation(filename, 1, 1)) from None
         raise EPLError("SyntaxError", exc.msg, SourceLocation(filename, exc.lineno, exc.colno)) from None
     if not isinstance(raw, dict):
         _error(text, filename, "protocol", "TypeError", "top-level EPL value must be an object")
@@ -101,7 +107,11 @@ def parse_epl(text: str, filename: str = "<memory>") -> ProtocolAST:
     if raw["schema"] != "epv-epl-0.1":
         _error(text, filename, "schema", "UnsupportedSchema", "expected 'epv-epl-0.1'")
 
+    if not isinstance(raw["protocol"], str) or not raw["protocol"] or len(raw["protocol"]) > 256:
+        _error(text, filename, "protocol", "InvalidProtocol", "protocol must be a nonempty string of at most 256 characters")
     agents = raw["agents"]
+    if not isinstance(agents, dict):
+        _error(text, filename, "agents", "InvalidAgents", "agents must be an object")
     if set(agents) == {"ids"}:
         ids = agents["ids"]
         if not isinstance(ids, list) or not ids or any(not isinstance(v, str) or not v for v in ids):
@@ -128,6 +138,8 @@ def parse_epl(text: str, filename: str = "<memory>") -> ProtocolAST:
             _error(text, filename, section, "UnsupportedNumericType", "domain bounds must be integers")
         if lo > hi:
             _error(text, filename, section, "InvalidDomain", "domain minimum exceeds maximum")
+        if hi - lo + 1 > 1000:
+            _error(text, filename, section, "ResourceLimit", "integer domain may contain at most 1000 values")
         return lo, hi
 
     type_min, type_max = domain("types")
@@ -136,6 +148,8 @@ def parse_epl(text: str, filename: str = "<memory>") -> ProtocolAST:
     if resource != {"kind": "single_indivisible", "capacity": 1}:
         _error(text, filename, "resource", "UnsupportedConstruct", "M2 supports one indivisible item of capacity 1")
     allocation = raw["allocation"]
+    if not isinstance(allocation, dict):
+        _error(text, filename, "allocation", "InvalidAllocation", "allocation must be an object")
     if set(allocation) != {"rule", "tie_break"}:
         _error(text, filename, "allocation", "InvalidAllocation", "allocation requires rule and tie_break")
     if allocation["rule"] not in {"highest_report", "all_agents", "agent_zero"}:
@@ -147,6 +161,8 @@ def parse_epl(text: str, filename: str = "<memory>") -> ProtocolAST:
     if allocation["rule"] == "highest_report" and allocation["tie_break"] != "lowest_id":
         _error(text, filename, "tie_break", "MissingTieBreak", "highest_report requires lowest_id")
     payments = raw["payments"]
+    if not isinstance(payments, dict):
+        _error(text, filename, "payments", "InvalidPayments", "payments must be an object")
     if set(payments) != {"rule", "sign"} or payments["sign"] != "agent_pays_mechanism":
         _error(text, filename, "payments", "TransferSignError", "sign must be agent_pays_mechanism")
     if payments["rule"] not in {"second_highest", "own_report", "winner_subsidy_one", "zero"}:

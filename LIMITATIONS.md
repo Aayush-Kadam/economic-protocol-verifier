@@ -10,3 +10,7 @@ Matching is one-to-one with strict complete rankings and a 2x2 canonical strateg
 ## M6
 
 Full synthesis is limited to two bidders and tiny finite integer tables. Payments are winner-only with explicit constant loser normalization. Optimization and minimality use exhaustive enumeration, not scalable solver optimization. The bounded impossibility core is intentionally a normalization/bound conflict. Matching/fair-division synthesis, continuous parameters, randomized rules, general perturbation radii, and universal impossibility proofs are excluded.
+
+## M7
+
+Generated campaigns cover supported finite fragments, not arbitrary Python mechanisms or hostile operating-system behavior. No second cvc5 version was installed; proof portability across versions is unestablished. Clean reproduction reused the pinned local virtual environment and WSL toolchain rather than rebuilding dependencies from the network. Mutation analysis is targeted rather than exhaustive. Scaling measurements are small and machine-specific.

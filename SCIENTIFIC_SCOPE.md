@@ -42,3 +42,7 @@ M5 adds strict one-to-one ordinal matching and finite additive-cardinal fair div
 ## M6 synthesis scope
 
 M6 searches explicit finite two-bidder auction tables and integer reserve grids. SAT, optimality, repair, and UNSAT statements apply only to the declared allocation family, payment values, normalization, property versions, and prior. No bounded result is promoted to a general impossibility or characterization theorem.
+
+## M7 validation scope
+
+M7 supplies adversarial evidence for the existing bounded fragments. It does not expand supported economics. Generated differential tests, parser fuzzing, mutation analysis, certificate attacks, clean-archive replay, and scaling measurements reduce—but do not eliminate—the risk of common-mode translation errors.

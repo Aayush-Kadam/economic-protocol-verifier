@@ -37,3 +37,7 @@ Matching ranking validation, deferred-acceptance execution, blocking-pair enumer
 ## M6 synthesis
 
 The synthesis-problem compiler, table enumerator, candidate decoder, membership checks, objective/prior evaluator, repair-distance evaluator, minimal-core validator, and status interpreter are trusted. Every SAT candidate is passed through normal property evaluators. Exhaustive enumeration independently establishes the reported tiny-domain optima and repair minima. Carcara checks only the compiled bounded-UNSAT truth table, not completeness of candidate enumeration or economic translation.
+
+## M7 evidence update
+
+Domain evaluators and compilers are differentially validated but remain trusted because all grounded backends consume their materialized cases. Proof syntax is independently checked by pinned Carcara; economic translation is not. EPL parsing was fuzzed, certificate and synthesis bindings were attacked, and independent hand/table oracles supplement production expectations. Python, canonical serialization, SHA-256, and the host/WSL boundary remain trusted.

@@ -110,7 +110,7 @@ def generate_alethe(problem: bytes) -> bytes:
     return raw
 
 
-def check_alethe(checker: Path, proof: Path, problem: Path, timeout: float = 30) -> CheckerResult:
+def check_alethe(checker: Path, proof: Path, problem: Path, timeout: float = 60) -> CheckerResult:
     if not checker.is_file():
         return CheckerResult(CheckerStatus.ERROR, "", "checker executable missing")
     def linux_path(path: Path) -> str:
@@ -150,10 +150,11 @@ def write_bundle(m: DeterministicDirectMechanism, prop: str, directory: Path, ch
     return directory
 
 
-def validate_bundle(m: DeterministicDirectMechanism, prop: str, directory: Path, checker: Path, timeout: float = 30) -> CheckerResult:
-    try: manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+def validate_bundle(m: DeterministicDirectMechanism, prop: str, directory: Path, checker: Path, timeout: float = 60) -> CheckerResult:
+    try:
+        manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+        problem = (directory / "problem.smt2").read_bytes(); proof = (directory / "proof.alethe").read_bytes()
     except (OSError, ValueError) as exc: return CheckerResult(CheckerStatus.REJECTED, "", str(exc))
-    problem = (directory / "problem.smt2").read_bytes(); proof = (directory / "proof.alethe").read_bytes()
     expected = proof_problem(m, prop)
     bindings = manifest.get("schema") == SCHEMA and manifest.get("assurance") == "V3_BOUNDED" and manifest.get("property") == prop and manifest.get("property_version") == PROPERTY_VERSION and manifest.get("mechanism_hash") == mechanism_hash(m) and manifest.get("mechanism") == mechanism_document(m) and manifest.get("domain") == _domain(m) and manifest.get("assumptions") == [asdict(a) for a in sorted(m.assumptions)] and manifest.get("logical_problem_hash") == sha256(problem) and manifest.get("proof_hash") == sha256(proof) and manifest.get("proof_format") == "alethe" and manifest.get("producer") == PRODUCER and manifest.get("checker") == {"name":"carcara", "version":CHECKER_VERSION, "required_result":"valid"} and isinstance(manifest.get("epv_commit"), str) and len(manifest["epv_commit"]) == 40 and problem == expected
     if not bindings: return CheckerResult(CheckerStatus.REJECTED, "", "certificate binding mismatch")
@@ -172,7 +173,7 @@ def write_domain_bundle(domain_family: str, semantics_version: str, semantic_has
 
 
 def validate_domain_bundle(domain_family: str, semantics_version: str, semantic_hash: str, property_id: str,
-                           violations: Iterable[bool], directory: Path, checker: Path, timeout: float=30) -> CheckerResult:
+                           violations: Iterable[bool], directory: Path, checker: Path, timeout: float=60) -> CheckerResult:
     try:
         manifest=json.loads((directory/"manifest.json").read_text(encoding="utf-8")); problem=(directory/"problem.smt2").read_bytes(); proof=(directory/"proof.alethe").read_bytes()
     except (OSError,ValueError) as exc: return CheckerResult(CheckerStatus.REJECTED,"",str(exc))

@@ -68,7 +68,7 @@ def solve_cvc5(problem: WitnessProblem, timeout_ms: int = 10_000) -> SolverResul
         kind = {">": Kind.GT, "<": Kind.LT, "!=": Kind.DISTINCT}[case.predicate.op]
         comparison = solver.mkTerm(kind, q(case.predicate.lhs), q(case.predicate.rhs))
         clauses.append(solver.mkTerm(Kind.AND, solver.mkTerm(Kind.EQUAL, choice, solver.mkInteger(index)), comparison))
-    solver.assertFormula(solver.mkTerm(Kind.OR, *clauses) if clauses else solver.mkFalse())
+    solver.assertFormula((clauses[0] if len(clauses) == 1 else solver.mkTerm(Kind.OR, *clauses)) if clauses else solver.mkFalse())
     raw = solver.checkSat(); runtime = (time.perf_counter() - start) * 1000
     version = getattr(cvc5, "__version__", "unknown")
     if raw.isSat():

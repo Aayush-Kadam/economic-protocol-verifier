@@ -46,3 +46,8 @@
 - Added exact revenue optimization, payment-only repair, bounded UNSAT, MUS extraction, reserve synthesis, and severity metrics.
 - Added five synthesis benchmarks and a Carcara-accepted bounded-impossibility certificate.
 - Deferred matching/fair-division synthesis and scalable optimization.
+# M7
+
+- Added deterministic cross-domain differential corpora, parser fuzzing, metamorphic checks, semantic mutation analysis, certificate/synthesis attacks, hand oracles, and scaling records.
+- Fixed malformed-prior acceptance, out-of-class payment repair, missing-file proof validation, unary cvc5 disjunctions, and EPL resource limits.
+- Recorded zero unresolved critical/high defects and zero known false-result cases in the tested fragment.

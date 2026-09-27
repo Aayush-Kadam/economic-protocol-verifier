@@ -23,3 +23,7 @@ Run `.venv\Scripts\python.exe -m unittest discover -s tests -v`. This evaluates 
 ## M6
 
 The same command exhaustively replays every tiny synthesis, optimization, repair, MUS, parameter, and severity benchmark, then validates the M6 Carcara bundle. Validate `benchmarks/m6/registry.json` with Python's JSON parser. No network access is required.
+
+## M7
+
+Run the full suite under at least two `PYTHONHASHSEED` values and validate `benchmarks/m7/results.json` and `scaling.json`. A clean Git archive should be tested with `PYTHONPATH=<archive>/src` using the pinned `.venv` interpreter; Carcara remains at the original repository's pinned `.tools/carcara-current` path unless copied into the archive.

@@ -39,6 +39,10 @@ class AuctionTableProblem:
         if self.allocation_family not in {"efficient-lowest-index-tie","all-feasible"}: raise ValueError("unknown allocation family")
         if self.objective not in {None,"expected_revenue","expected_welfare"}: raise ValueError("unknown objective")
         if self.objective and self.prior is None: raise ValueError("optimization requires explicit exact prior")
+        if self.prior is not None:
+            keys=tuple(k for k,_ in self.prior); weights=tuple(w for _,w in self.prior)
+            if len(set(keys))!=len(keys) or set(keys)!=set(self.values): raise ValueError("prior must assign every value exactly once")
+            if any(isinstance(w,bool) or not isinstance(w,int) or w<0 for w in weights) or sum(weights)<=0: raise ValueError("prior weights must be nonnegative integers with positive total")
     def canonical_bytes(self): return json.dumps(asdict(self),sort_keys=True,separators=(",",":")).encode()
     def problem_hash(self): return "sha256:"+hashlib.sha256(self.canonical_bytes()).hexdigest()
     def profiles(self): return tuple(product(self.values,repeat=2))
@@ -125,6 +129,9 @@ def repair_payment_table(baseline:DeterministicDirectMechanism,problem:AuctionTa
     base=[]
     for p in problem.profiles():
         o=baseline.outcome(tuple(Fraction(x) for x in p)); winner=0 if o.allocation.quantities[0] else 1; base.append(int(o.transfers[winner]))
+        expected=0 if p[0]>=p[1] else 1
+        if o.allocation.quantities != tuple(Fraction(i==expected) for i in range(2)):
+            raise ValueError("baseline allocation lies outside payment-only repair class")
     valid=[]
     alloc=tuple(0 if a>=b else 1 for a,b in problem.profiles())
     for payments in product(problem.payment_values,repeat=len(base)):

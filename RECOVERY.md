@@ -52,6 +52,32 @@ Known limitations: tiny exhaustive classes; trusted synthesis compiler; matching
 
 Exact next step: M7 only when separately authorized.
 
+## M7 recovery
+
+Project: Economic Protocol Verifier
+
+Repository: `C:\Users\AAYUSH\Documents\Codex\2026-09-27\files-mentioned-by-the-user-economic\outputs\economic-protocol-verifier`
+
+Branch: `main`
+
+HEAD: annotated tag `m7-hostile-validation`
+
+Working tree: clean at release
+
+Latest milestone: M7
+
+Verdict: PASS WITH LIMITATIONS
+
+Tag: `m7-hostile-validation`
+
+Generated verification cases: 120 instances and 584 property evaluations. Differential cases: 584 per backend. Mutation cases: 18. Parser fuzz cases: 206. Certificate attacks: 19. Synthesis attacks: 32.
+
+Critical defects found/unresolved: 0/0. High defects found/unresolved: 3/0. Clean reproduction: clean Git archive passed. Scaling envelope: verification measured through four bidders/two values; synthesis through 81 candidates.
+
+Known limitations: trusted translation, targeted mutation scope, one cvc5 version, WSL Carcara dependency, and tiny synthesis scale.
+
+Exact M8 readiness: M8 may begin only when separately authorized.
+
 ## M5 recovery
 
 Project: Economic Protocol Verifier
