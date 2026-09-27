@@ -15,4 +15,4 @@ M5: **PASS WITH LIMITATIONS**. Supported domains are auctions, strict one-to-one
 
 M6: **PASS WITH LIMITATIONS**. Tiny finite auction classes support synthesis, exact optimization, payment-only repair, bounded-class UNSAT, exact minimal cores, reserve synthesis, and exact severity metrics. Matching and fair-division synthesis are deferred.
 
-M7: **PASS WITH LIMITATIONS**. Hostile validation found and fixed three HIGH and three MEDIUM defects. The committed deterministic campaign has zero unexplained solver discrepancy and zero known false VERIFIED, COUNTEREXAMPLE, V3, OPTIMAL, or bounded-UNSAT result.
+M7: **PASS WITH LIMITATIONS**. Hostile validation found and fixed one CRITICAL, three HIGH, and three MEDIUM defects. The committed deterministic campaign has zero unexplained solver discrepancy and zero known false VERIFIED, COUNTEREXAMPLE, V3, OPTIMAL, or bounded-UNSAT result.

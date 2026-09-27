@@ -1,0 +1,2 @@
+proofs/**/*.smt2 -text
+proofs/**/*.alethe -text

@@ -8,5 +8,6 @@
 | M7-004 | MEDIUM | cvc5 adapter | generated singleton problem | unary `OR` crashed cvc5 adapter | direct singleton assertion; generated matching regression | resolved |
 | M7-005 | MEDIUM | EPL parser | resource fuzzing | unbounded source/domain sizes exposed easy resource exhaustion | 1 MB source and 1,000-value domain limits; resource regressions | resolved |
 | M7-006 | MEDIUM | proof replay | hash-seed/cold-start repeat | first cold WSL Carcara run exceeded the 30-second default and failed closed | 60-second default; explicit injected timeout remains tested | resolved |
+| M7-007 | CRITICAL | proof artifact provenance | clean Git archive | Windows line-ending normalization changed committed SMT/Alethe bytes, so all clean-checkout certificate hashes failed | mark proof/formula artifacts binary and recommit exact bytes; clean-archive replay | resolved |
 
-No CRITICAL defect was found. No HIGH defect remains unresolved.
+One CRITICAL defect was found and resolved. No CRITICAL or HIGH defect remains unresolved.

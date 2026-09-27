@@ -72,7 +72,7 @@ Tag: `m7-hostile-validation`
 
 Generated verification cases: 120 instances and 584 property evaluations. Differential cases: 584 per backend. Mutation cases: 18. Parser fuzz cases: 206. Certificate attacks: 19. Synthesis attacks: 32.
 
-Critical defects found/unresolved: 0/0. High defects found/unresolved: 3/0. Clean reproduction: clean Git archive passed. Scaling envelope: verification measured through four bidders/two values; synthesis through 81 candidates.
+Critical defects found/unresolved: 1/0. High defects found/unresolved: 3/0. Clean reproduction: clean Git archive passed after binary artifact enforcement. Scaling envelope: verification measured through four bidders/two values; synthesis through 81 candidates.
 
 Known limitations: trusted translation, targeted mutation scope, one cvc5 version, WSL Carcara dependency, and tiny synthesis scale.
 
