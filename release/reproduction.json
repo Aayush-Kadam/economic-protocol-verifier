@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "counterexample_replay": "PASS",
+    "repair": "OPTIMAL_REPAIR_FOUND",
+    "synthesis": "SAT_CANDIDATE_FOUND",
+    "v1_second_price_dsic": "BOUNDED VERIFIED",
+    "v2_cvc5": "UNSAT",
+    "v2_z3": "UNSAT",
+    "v3_second_price_dsic": "ACCEPTED"
+  },
+  "mode": "full",
+  "runtime_seconds": 27.35,
+  "schema": "epv-reproduction-v1",
+  "status": "PASS",
+  "tests": {
+    "returncode": 0,
+    "summary": "Ran 151 tests in 21.840s"
+  }
+}

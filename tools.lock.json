@@ -1,0 +1,8 @@
+{
+  "schema": "epv-tool-lock-v1",
+  "python": "3.12",
+  "cvc5": "1.4.1",
+  "z3-solver": "5.1.0.0",
+  "carcara": {"version": "1.1.0", "git_commit": "051d2f79ccd3d5736bb3d93356f05df3dfc696e9", "windows_transport": "WSL"},
+  "validated_os": "Windows with WSL for Carcara"
+}

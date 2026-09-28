@@ -1,29 +1,36 @@
 # Reproducibility
 
-M0 is documentation-only. Primary evidence is recorded in `docs/literature/sources.json` and `PRIOR_ART_MATRIX.csv` with stable DOI or project URLs where available. Tool baseline observed on 2026-09-27: Git 2.55.0.windows.3 and CPython 3.12.10. cvc5, Z3, Carcara, Lean, Coq/Rocq, and Isabelle were not found on PATH.
+## Environment
 
-M2 uses project-local Python packages cvc5 1.4.1 and z3-solver 5.1.0.0 (solver-reported Z3 5.1.0). The Python APIs are used directly; no solver executable path is required.
+The validated platform is Windows with Python 3.12 and WSL for pinned Carcara. Exact formal-tool versions are in `tools.lock.json`; Python packages are pinned in `requirements-lock.txt`. Wheel hashes are not included, so this is version-locked but not hermetic.
 
-Reproduce M0 checks with:
+## Install from a clean archive
 
 ```powershell
-python -m json.tool docs/literature/sources.json > $null
-python -m unittest discover -s tests -v
-git status --short
+py -3.12 -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.venv\Scripts\python.exe -m pip install --no-deps -e .
+epv doctor
+python -m epv.reproduce
+python -m epv.reproduce --full
 ```
 
-For M2 use `.venv\Scripts\python.exe` so both solver bindings are present.
+V3 requires `.tools/carcara-current` built from commit `051d2f79ccd3d5736bb3d93356f05df3dfc696e9`. On Windows the adapter invokes it through WSL. If it is absent, the system correctly reports V3 unavailable rather than silently downgrading.
 
-M3 counterexample and mutant metrics are reproduced by the full test suite. The corpus is deterministic and has no external data dependency.
+## Evidence map
 
-## M5
+- M7 counts: `benchmarks/m7/results.json`
+- scaling: `benchmarks/m7/scaling.json`
+- synthesis cases: `benchmarks/m6/registry.json`
+- release benchmark: `benchmarks/manifest.json`
+- proof bundles: `proofs/*/{manifest.json,problem.smt2,proof.alethe}`
+- final recorded runs: `release/FINAL_VALIDATION.md` and `release/reproduction.json`
+- manuscript source: `paper/EPV_M8_MANUSCRIPT.md`
 
-Run `.venv\Scripts\python.exe -m unittest discover -s tests -v`. This evaluates all three domain reference semantics, cvc5/Z3 differential cases, counterexample replays, applicability attacks, historical M4 bundles, and the two new-domain Carcara bundles. Carcara must be the pinned binary described in `docs/proofs/PROOF_PIPELINE.md`.
+## Clean-archive rule
 
-## M6
+Use `git archive` from the tagged commit, extract into a new directory, supply rather than copy the excluded environment/toolchain, then run full reproduction. Proof and SMT files are marked `-text` in `.gitattributes`; exact byte hashes must match.
 
-The same command exhaustively replays every tiny synthesis, optimization, repair, MUS, parameter, and severity benchmark, then validates the M6 Carcara bundle. Validate `benchmarks/m6/registry.json` with Python's JSON parser. No network access is required.
+## Limits
 
-## M7
-
-Run the full suite under at least two `PYTHONHASHSEED` values and validate `benchmarks/m7/results.json` and `scaling.json`. A clean Git archive should be tested with `PYTHONPATH=<archive>/src` using the pinned `.venv` interpreter; Carcara remains at the original repository's pinned `.tools/carcara-current` path unless copied into the archive.
+M7 and M8 reuse locally available pinned dependencies rather than downloading and rebuilding every tool from the network. Results therefore establish clean-source/archive reproducibility on the declared platform, not a hermetic or cross-platform build.

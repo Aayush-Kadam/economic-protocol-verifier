@@ -1,2 +1,3 @@
 proofs/**/*.smt2 -text
 proofs/**/*.alethe -text
+output/**/*.pdf -text

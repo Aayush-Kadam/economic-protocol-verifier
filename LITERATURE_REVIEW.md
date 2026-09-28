@@ -1,34 +1,49 @@
-# Literature Review
+# Literature review
 
-Search date: 2026-09-27. Sources prioritize peer-reviewed papers, publisher pages, official documentation, and primary repositories. Structured records are in `docs/literature/sources.json`.
+Search date: 2026-09-28. This M8 review compares prior work with EPV as implemented, not with the original proposal.
 
-## Findings
+## Automated mechanism design
 
-### Automated mechanism design and synthesis
+Conitzer and Sandholm introduced automated mechanism design and analyzed its computational complexity in 2002. Consequently, EPV's finite search is neither a new research area nor a new synthesis paradigm. EPV contributes explicit search-class manifests, exhaustive post-verification, certificate binding for one bounded-UNSAT case, and repair provenance at tiny scale.
 
-Conitzer and Sandholm established automated mechanism design and complexity results in the early 2000s; important deterministic variants are NP-complete. Thus synthesis is not an EPV novelty. Mittelmann, Maubert, Murano, and Perrussel's 2025 *Artificial Intelligence* paper uses Strategy Logic to model, verify, and synthesize social-choice mechanisms. This is the closest high-level overlap and makes any general “verification plus synthesis” priority claim untenable.
+Mittelmann, Maubert, Murano, and Perrussel's *Formal verification and synthesis of mechanisms for social choice* (Artificial Intelligence 339, 2025) is the closest conceptual overlap: one formal setting supports both checking and synthesis. It prevents any claim that integrated verification and synthesis is new. EPV differs operationally in its cross-domain executable semantics, economic counterexample artifacts, hash-bound Alethe path, and hostile release validation; the comparative scientific value remains to be judged externally.
 
-### Proof-assistant verification
+## Formal mechanism and auction verification
 
-Caminati et al. and the ForMaRE line specify Vickrey/VCG auctions in Isabelle/HOL, prove functional and allocation properties, and generate verified executable code. Barthe et al. use formal proof methods for incentive compatibility of VCG and a randomized Bayesian reduction. The `mech.v` Coq/Mathematical Components project supplies reusable definitions for deterministic mechanisms, auctions, truthfulness, VCG, and matching-related work. Hence machine-checked economic mechanism semantics and proofs are established.
+Caminati, Kerber, Lange, and Rowat use Isabelle/HOL to specify VCG auctions, establish intended properties, and generate verified executable code. Related ForMaRE work compares theorem provers for auction theory. Barthe and collaborators verify incentive properties including VCG truthfulness and Bayesian constructions. The `mech.v` project supplies a Coq/Mathematical Components foundation for mechanism definitions and proofs, including auctions and matching-related material. These systems provide stronger theorem-level assurance than EPV's finite checking for their formalized results.
 
-### SAT/SMT and social choice
+EPV therefore claims neither formal-semantics priority nor stronger proof foundations. Its difference is a bounded, automatic, certificate-and-counterexample workflow aimed at rapid inspection of small protocol instances.
 
-Tang and Lin initiated SAT-supported impossibility proofs; later work searched for strategy-proof rules and impossibility cores. Brandl et al. encode efficiency/strategy-proofness constraints in quantifier-free linear real arithmetic, extract a minimal unsatisfiable set, and reconstruct a proof in Isabelle/HOL. The COMSOC codebase provides reusable SAT-based reasoning and MUS tooling. Automated axiom reasoning, countermodels, and impossibility search are therefore established.
+Recent logic-based work extends formal verification to Bayesian mechanisms and diffusion auctions. This makes domain novelty still less defensible: EPV's claim rests on its artifact discipline and cross-domain assurance workflow, not on being the first formal treatment of an auction family.
 
-### Proof production
+## SAT/SMT social choice and countermodels
 
-cvc5 can emit Alethe proofs, but its documentation explicitly limits support to equality/uninterpreted functions and parts of arithmetic and quantifiers. Carcara independently checks and elaborates Alethe proofs, but cvc5 documentation notes that Carcara is not formally verified. Certificate support must be measured for EPV-generated formulas; it cannot be promised for every conclusive SMT result.
+SAT/SMT encodings, countermodels, impossibility search, and minimal cores are established in computational social choice. Brandl et al. notably combine QF_LRA solving, minimal inconsistent sets, and Isabelle/HOL reconstruction for a strategyproofness/efficiency incompatibility. EPV's exact-minimum economic witnesses and uniform replay format are an artifact design choice, not the invention of counterexample-guided analysis or MUS extraction.
 
-### Theorem-prover choice
+## Proof-producing SMT
 
-Isabelle has directly relevant auction and SMT-reconstruction precedents. Coq has `mech.v` and mature Mathematical Components infrastructure. Lean 4 offers a compact kernel, extensibility, and active libraries, but recent releases document kernel soundness fixes; a pinned and independently auditable toolchain is necessary. M0 defers the integration decision while tentatively selecting Lean for a narrow M4 reconstruction experiment, not wholesale reimplementation.
+Alethe is an SMT proof format, cvc5 produces Alethe for supported fragments, and Carcara is an independent checker/elaborator. EPV reuses this infrastructure. Its contribution is the binding policy from economic identity and assumptions to exact problem/proof bytes, plus fail-closed fresh checking. Carcara checks the compiled refutation; it does not validate the economic translation and is not itself a formally verified kernel.
 
-## Landscape conclusion
+## Verification DSLs and proof-carrying systems
 
-No reviewed source combines every proposed EPV operational feature, but nearly every individual scientific ingredient has strong prior art. The defensible research question is whether an integrated, explicit, reproducible workflow can improve assurance and usability without hiding the formalization gap. This is primarily an integration/verification-engineering hypothesis until evaluation demonstrates a scientific contribution.
+Domain-specific verification languages and proof-carrying artifacts are broad established ideas. EPL 0.1 is intentionally small and template-based. Its research value, if any, lies in making assumptions, report/type separation, bounds, and provenance explicit; no language-theory novelty is claimed.
 
-## Search limitations
+## Cross-domain scope
 
-Keyword and citation-chain search cannot prove nonexistence. The 2025 Strategy Logic work is recent and requires deeper artifact-level comparison before publication claims. M0 should be revisited before any paper submission.
+EPV applies one assurance vocabulary to deterministic single-item auctions, strict one-to-one matching, and additive indivisible-goods fair division. Prior libraries and logics are often more general, and individual domain algorithms/theorems are classical. Cross-domain packaging is an engineering contribution unless external evaluation demonstrates a deeper reusable abstraction.
 
+## Conclusion
+
+The appropriate framing is an assurance-oriented research artifact and systems/demo contribution. A workshop, demo, or software/artifact paper is better supported than a theorem-focused formal-methods paper or an economics-theory paper. The next gate is independent review, not publication.
+
+## Primary sources
+
+- Conitzer and Sandholm, *Complexity of Mechanism Design*, UAI 2002, https://arxiv.org/abs/cs/0205075
+- Caminati et al., *Sound Auction Specification and Implementation*, 2015, https://doi.org/10.1145/2764468.2764511
+- Barthe et al., *Computer-aided Verification in Mechanism Design*, https://arxiv.org/abs/1502.04052
+- Jouvelot and Gallego Arias, `mech.v`, https://github.com/jouvelot/mech.v
+- Brandl et al., *Proving the Incompatibility of Efficiency and Strategyproofness via SMT Solving*, https://arxiv.org/abs/1604.05692
+- Mittelmann et al., *Formal verification and synthesis of mechanisms for social choice*, https://doi.org/10.1016/j.artint.2024.104272
+- Carcara project and TACAS paper, https://github.com/ufmg-smite/carcara
+- Mittelmann et al., *Formal Verification of Bayesian Mechanisms*, https://ojs.aaai.org/index.php/AAAI/article/view/26373
+- Galimullin, Mittelmann, and Perrussel, *Formal Verification of Diffusion Auctions*, https://arxiv.org/abs/2511.08765
