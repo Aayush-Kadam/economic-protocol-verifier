@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-rc (M8)
+
+- froze three supported domains and a 14-property machine-readable registry;
+- added `epv` verify, replay, check-proof, synthesize, repair, benchmark, and doctor commands;
+- added representative/full one-command reproduction and release benchmark manifest;
+- added canonical trust/assurance, quickstart, theory, certificate, and synthesis documentation;
+- completed focused novelty re-audit, full manuscript, hostile-referee audit, release notes, and scripted user stories;
+- kept V3 limited to independently checked compiled propositional obligations and documented the trusted translation;
+- deferred the optional web playground; made no external publication or submission.
+
 ## 0.3.0-m3
 
 - Added six typed economic witness payloads and versioned counterexample certificates.

@@ -1,23 +1,26 @@
-# Novelty Audit
+# M8 novelty re-audit
 
-## Verdict
+Search date: 2026-09-28. Verdict: **the individual scientific ingredients are established; the defensible contribution is assurance-oriented systems integration and validation.**
 
-**PASS WITH NARROWING.** The broad concept is not novel. Automated mechanism design, theorem-prover formalizations of auctions and incentive compatibility, SAT/SMT social-choice reasoning, and formal verification plus synthesis in Strategy Logic are established. A credible contribution may remain in the disciplined integration of a readable DSL, typed/canonical economic IR, systematic witness compilation, assumption auditing, counterexample replay/minimization, cross-backend differential checks, and proof-artifact provenance.
+Formal auction specification and theorem proving, computer-aided incentive verification, automated mechanism design, Strategy-Logic verification/synthesis, SAT/SMT social-choice reasoning, minimal unsatisfiable cores, and independent Alethe proof checking all predate EPV. No priority claim is made.
 
-## Claims EPV must not make
+The narrow contribution supported by the artifact is:
 
-- first formal verification of mechanisms, auctions, VCG, or incentive compatibility;
-- first automated synthesis of mechanisms;
-- first SAT/SMT application to social choice;
-- first machine-checked impossibility result;
-- solver `unsat` is inherently independently verified;
-- bounded exhaustive checking proves an unrestricted theorem.
+> EPV integrates typed finite-domain semantics for selected auctions, matching, and fair division with multi-backend bounded verification, exactly minimized replayable counterexamples, independently checked certificates for compiled propositional obligations, and small finite synthesis/repair in one hash-bound, adversarially validated workflow.
 
-## Highest-risk overlap
+This is principally a systems and verification-engineering contribution. The methodological contribution is the explicit property-to-failure pipeline plus hostile validation across positive, negative, proof, and synthesis claims. The research contribution is plausible only as an evaluated integration; no new economic theorem, proof calculus, solver, or synthesis algorithm is claimed.
 
-Mittelmann et al. (Artificial Intelligence, 2025) already present formal verification and synthesis of social-choice mechanisms in Strategy Logic. `mech.v` provides a Coq/Mathematical Components foundation for deterministic mechanisms and auction properties. Caminati and collaborators formalized Vickrey/VCG specifications and executable code in Isabelle/HOL. Barthe et al. formally verified VCG truthfulness and a randomized BIC reduction. Brandl et al. used SMT plus Isabelle/HOL reconstruction for a social-choice impossibility.
+The focused search found no reviewed artifact demonstrating this exact combination and release discipline. That is an absence-of-evidence statement, not evidence of priority. Artifact-level comparison with the 2025 Strategy Logic system and expert review are required before submission.
 
-## Remaining hypothesis
+## Claims excluded
 
-No source reviewed in M0 demonstrated the complete user-facing bundle under one auditable artifact format: readable economic DSL; explicit truth/report semantics; canonical hashes; multiple properties compiled to witnesses; minimal replayable economic counterexamples; exhaustive oracle differential testing; and formula-bound independently checked certificates. This is an absence-of-evidence observation, not a priority claim. It requires continued search and empirical comparison.
+- first mechanism verifier or synthesizer;
+- universal verification of auctions or markets;
+- formally verified economic compiler;
+- fully independent verification;
+- general impossibility or optimality from a bounded search;
+- novelty of Alethe, SMT, counterexamples, formal semantics, or automated mechanism design.
 
+## Evidence boundary
+
+The review prioritizes primary papers, publisher records, official repositories, and official proof-tool documentation. Keyword/citation search cannot establish nonexistence, and adjacent work may use different terminology. `PRIOR_ART_MATRIX.csv` records the closest overlaps.

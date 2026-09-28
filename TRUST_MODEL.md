@@ -41,3 +41,7 @@ The synthesis-problem compiler, table enumerator, candidate decoder, membership 
 ## M7 evidence update
 
 Domain evaluators and compilers are differentially validated but remain trusted because all grounded backends consume their materialized cases. Proof syntax is independently checked by pinned Carcara; economic translation is not. EPL parsing was fuzzed, certificate and synthesis bindings were attacked, and independent hand/table oracles supplement production expectations. Python, canonical serialization, SHA-256, and the host/WSL boundary remain trusted.
+
+## M8 canonical reference
+
+`TRUST_AND_ASSURANCE.md` is the definitive external trust statement. M8 changes presentation and reproducibility, not the underlying trust boundary.

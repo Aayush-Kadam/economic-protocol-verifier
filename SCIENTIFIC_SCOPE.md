@@ -46,3 +46,7 @@ M6 searches explicit finite two-bidder auction tables and integer reserve grids.
 ## M7 validation scope
 
 M7 supplies adversarial evidence for the existing bounded fragments. It does not expand supported economics. Generated differential tests, parser fuzzing, mutation analysis, certificate attacks, clean-archive replay, and scaling measurements reduce—but do not eliminate—the risk of common-mode translation errors.
+
+## M8 frozen release scope
+
+M8 adds no economic domain. The final contribution is an assurance-oriented integration of typed finite semantics, multi-backend bounded verification, replayable exact-minimum counterexamples, independently checked certificates for compiled propositional obligations, and small auction synthesis/repair. The CLI, benchmark, manuscript, and reproducibility package expose existing validated functionality. The local web playground is deferred because it would add presentation surface without new scientific evidence.
