@@ -21,8 +21,9 @@ V3 requires `.tools/carcara-current` built from commit `051d2f79ccd3d5736bb3d933
 
 Upstream: [ufmg-smite/carcara](https://github.com/ufmg-smite/carcara).
 The pinned source's Cargo manifest requires **Rust 1.93 or newer**; the public
-installation website may describe an older minimum. M1-R used Rust/Cargo 1.98.1
-in Ubuntu on WSL2. The build uses the committed Cargo.lock with `--locked`.
+installation website may describe an older minimum. The local M1-R builds used
+Rust/Cargo 1.93.1 in Ubuntu on WSL2; the separate CI job pins 1.98.1.
+The build uses the committed Cargo.lock with `--locked`.
 Cargo may need network access on first installation. A populated trusted cache
 can use `CARGO_NET_OFFLINE=true`; this is not a hermetic or bit-reproducible build.
 
