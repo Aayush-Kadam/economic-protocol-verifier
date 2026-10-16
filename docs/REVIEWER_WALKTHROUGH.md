@@ -40,7 +40,9 @@ input/version and machine; do not compare wall-clock time as a benchmark.
 The last command intentionally exits 1 and reports `FAIL` without the pinned
 Carcara binary. A green core test suite with explicit V3 skips does not establish
 V3. Install the exact checker in `tools.lock.json` and rerun to validate proofs;
-never substitute a dummy checker. See [reproducibility](../REPRODUCIBILITY.md).
+never substitute a dummy checker. The [reproducibility guide](../REPRODUCIBILITY.md)
+now provides the pinned source-build procedure and explains Git abbreviation
+compatibility; a separate CI job builds the authentic checker and runs V3.
 
 The portfolio repair was exercised from an environment outside the repository's
 usual `.venv` directory. It fixes interpreter selection, preserves the negative
