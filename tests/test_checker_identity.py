@@ -56,7 +56,7 @@ class CheckerIdentityTests(unittest.TestCase):
 
     def test_invalid_checker_results_reject_even_with_correct_identity(self):
         version = f"carcara 1.1.0 [git {CHECKER_COMMIT}]"
-        for output, code in (("", 0), ("not valid", 0), ("invalid", 0), ("valid", 1), ("valid\ninvalid", 0)):
+        for output, code in (("", 0), ("not valid", 0), ("invalid", 0), ("valid", 1), ("valid\ninvalid", 0), ("invalid\nvalid", 0)):
             with self.subTest(output=output, code=code):
                 self.assertIs(self.probe(version, proof_output=output, proof_code=code)[0].status, CheckerStatus.REJECTED)
 

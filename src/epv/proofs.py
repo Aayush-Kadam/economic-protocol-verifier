@@ -131,8 +131,7 @@ def check_alethe(checker: Path, proof: Path, problem: Path, timeout: float = 60)
         p = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired: return CheckerResult(CheckerStatus.TIMEOUT, "", "timeout")
     except OSError as exc: return CheckerResult(CheckerStatus.ERROR, "", str(exc))
-    word = p.stdout.strip().splitlines()[-1:] or [""]
-    status = CheckerStatus.ACCEPTED if p.returncode == 0 and word[0] == "valid" else (CheckerStatus.UNSUPPORTED if "holey" in p.stdout else CheckerStatus.REJECTED)
+    status = CheckerStatus.ACCEPTED if p.returncode == 0 and p.stdout.strip() == "valid" else (CheckerStatus.UNSUPPORTED if "holey" in p.stdout else CheckerStatus.REJECTED)
     return CheckerResult(status, p.stdout, p.stderr)
 
 

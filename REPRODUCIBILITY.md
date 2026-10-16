@@ -57,6 +57,8 @@ a 7–40 character hexadecimal prefix of the exact pinned full commit; wrong
 versions/revisions, dirty suffixes, malformed output and failed probes reject.
 This identity string is a compatibility check, not cryptographic binary attestation.
 Proof and formula hashes and all other bundle bindings are still checked exactly.
+Only exit zero with the complete trimmed output `valid` is accepted; a final
+`valid` line cannot override contradictory preceding checker output.
 
 Core CI tests missing-checker behavior with explicit V3 skips. A separate Linux
 job builds the real pinned checker with Rust 1.98.1 and runs full assurance
