@@ -24,6 +24,7 @@ jobs:
         run: python -m epv doctor
   proof-checker:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -39,3 +40,11 @@ jobs:
         run: rustup run 1.98.1 bash scripts/setup_carcara.sh
       - name: Full assurance reproduction with the real checker
         run: python -m epv.reproduce --full
+      - name: Require all discovered tests to run without skips
+        run: |
+          python - <<'PY'
+          import unittest
+          result = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.discover('tests'))
+          if not result.wasSuccessful() or result.skipped or not result.testsRun:
+              raise SystemExit('Full assurance requires successful, nonempty, zero-skip discovery')
+          PY

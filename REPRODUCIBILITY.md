@@ -38,7 +38,7 @@ Use the Python environment where EPV and the pinned solvers are installed.
 On Windows, with an existing Ubuntu WSL distribution and Rust/Cargo inside it:
 
 ```powershell
-wsl.exe --cd "$PWD" bash scripts/setup_carcara.sh
+wsl.exe --cd "$PWD" bash -lc 'bash scripts/setup_carcara.sh'
 .venv\Scripts\python.exe -m epv doctor
 .venv\Scripts\python.exe -m epv.reproduce --full
 ```

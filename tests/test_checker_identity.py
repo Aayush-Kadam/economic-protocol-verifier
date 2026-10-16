@@ -37,6 +37,12 @@ class CheckerIdentityTests(unittest.TestCase):
             "carcara 1.1.0 [git 051d2f79-dirty]",
             "carcara 1.1.0 [git 051d2f79] extra",
             "carcara 1.1.0 [git 051d2f7900000000000000000000000000000000]",
+            "carcara 1.1.0 [git ]",
+            "carcara 1.1.0 [git 051d2f7g]",
+            "unrelated 051d2f79 carcara 1.1.0",
+            "prefix carcara 1.1.0 [git 051d2f79]",
+            "carcara v1.1.0 (051d2f79)",
+            "carcara 1.1.0 [git 051d2f79]\nadditional identity",
         ):
             with self.subTest(identity=identity):
                 result, calls = self.probe(identity)
@@ -47,6 +53,18 @@ class CheckerIdentityTests(unittest.TestCase):
         version = f"carcara 1.1.0 [git {CHECKER_COMMIT}]"
         self.assertIs(self.probe(version, version_code=1)[0].status, CheckerStatus.UNSUPPORTED)
         self.assertIs(self.probe(version, proof_output="invalid", proof_code=1)[0].status, CheckerStatus.REJECTED)
+
+    def test_invalid_checker_results_reject_even_with_correct_identity(self):
+        version = f"carcara 1.1.0 [git {CHECKER_COMMIT}]"
+        for output, code in (("", 0), ("not valid", 0), ("invalid", 0), ("valid", 1), ("valid\ninvalid", 0)):
+            with self.subTest(output=output, code=code):
+                self.assertIs(self.probe(version, proof_output=output, proof_code=code)[0].status, CheckerStatus.REJECTED)
+
+    def test_missing_executable_never_launches_checker(self):
+        with tempfile.TemporaryDirectory() as directory, patch("epv.proofs.subprocess.run") as run:
+            result = check_alethe(Path(directory) / "absent.exe", Path("proof"), Path("problem"))
+            self.assertIs(result.status, CheckerStatus.ERROR)
+            run.assert_not_called()
 
     def test_identity_pin_matches_tool_lock(self):
         lock = json.loads((Path(__file__).resolve().parents[1] / "tools.lock.json").read_text())
