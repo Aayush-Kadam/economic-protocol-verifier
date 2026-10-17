@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import subprocess
 from dataclasses import asdict, dataclass
 from enum import Enum
@@ -17,6 +18,7 @@ from .eir import DeterministicDirectMechanism
 SCHEMA = "epv-proof-certificate-v1"
 PROPERTY_VERSION = "finite-exact-v1"
 CHECKER_VERSION = "carcara 1.1.0 [git 051d2f7]"
+CHECKER_COMMIT = "051d2f79ccd3d5736bb3d93356f05df3dfc696e9"
 PRODUCER = {"name": "cvc5", "version": "1.4.1"}
 
 
@@ -123,13 +125,13 @@ def check_alethe(checker: Path, proof: Path, problem: Path, timeout: float = 60)
         version_command = ["wsl.exe", linux_path(checker), "--version"]
     try:
         version = subprocess.run(version_command, capture_output=True, text=True, timeout=timeout)
-        if version.returncode != 0 or version.stdout.strip() != CHECKER_VERSION:
+        identity = re.fullmatch(r"carcara 1\.1\.0 \[git ([0-9a-f]{7,40})\]", version.stdout.strip())
+        if version.returncode != 0 or identity is None or not CHECKER_COMMIT.startswith(identity[1]):
             return CheckerResult(CheckerStatus.UNSUPPORTED, version.stdout, "unexpected checker identity/version")
         p = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired: return CheckerResult(CheckerStatus.TIMEOUT, "", "timeout")
     except OSError as exc: return CheckerResult(CheckerStatus.ERROR, "", str(exc))
-    word = p.stdout.strip().splitlines()[-1:] or [""]
-    status = CheckerStatus.ACCEPTED if p.returncode == 0 and word[0] == "valid" else (CheckerStatus.UNSUPPORTED if "holey" in p.stdout else CheckerStatus.REJECTED)
+    status = CheckerStatus.ACCEPTED if p.returncode == 0 and p.stdout.strip() == "valid" else (CheckerStatus.UNSUPPORTED if "holey" in p.stdout else CheckerStatus.REJECTED)
     return CheckerResult(status, p.stdout, p.stderr)
 
 

@@ -13,6 +13,12 @@ EPV does not prove arbitrary markets or universal economic theorems. Its economi
 
 Voting, randomized/Bayesian mechanisms, continuous domains, many-to-one matching, symbolic unbounded proofs, and deployed-code conformance are unsupported.
 
+## Start here
+
+For researchers and engineers inspecting small mechanism models, the shortest path is a V1 check and a V2 counterexample replay. See [the reviewer walkthrough](docs/REVIEWER_WALKTHROUGH.md) for expected statuses, exit codes, architecture, and checker limitations.
+
+This public source snapshot has **no published GitHub release** at the portfolio audit baseline (16 October 2026). Its [LICENSE](LICENSE) grants no redistribution or production-use permission; public visibility does not make it open-source licensed.
+
 ## Install
 
 ```powershell
@@ -26,13 +32,17 @@ V3 additionally requires the pinned Carcara binary described in `tools.lock.json
 ## First result
 
 ```powershell
-epv verify examples/second_price.epl --property dsic
-epv verify examples/first_price.epl --property dsic --assurance v2 --certificate-out counterexample.json
-epv replay counterexample.json --source examples/first_price.epl --property dsic
-epv doctor
+.venv\Scripts\python.exe -m epv verify examples/second_price.epl --property dsic
+.venv\Scripts\python.exe -m epv verify examples/first_price.epl --property dsic --assurance v2 --certificate-out counterexample.json
+.venv\Scripts\python.exe -m epv replay counterexample.json --source examples/first_price.epl --property dsic
+.venv\Scripts\python.exe -m epv doctor
 ```
 
-Use `--json` on verification and replay commands for machine-readable output. Run `python -m epv.reproduce` for representative evidence or `python -m epv.reproduce --full` for the full suite.
+Use `--json` on verification and replay commands for machine-readable output. A counterexample exits **2**; successful bounded verification or replay exits **0**. Run the commands separately so an expected counterexample does not prevent replay in a fail-on-error shell.
+
+On macOS/Linux, create the environment with `python3 -m venv .venv` and use `.venv/bin/python`. The CLI tests use the active interpreter rather than assuming an environment directory.
+
+Run `python -m epv.reproduce` for representative evidence or `python -m epv.reproduce --full` for the full suite. Both require the pinned Carcara checker for overall `PASS`; missing V3 checking intentionally produces `FAIL`. Core CI runs the test suite and doctor without claiming V3 validation.
 
 ## Assurance
 

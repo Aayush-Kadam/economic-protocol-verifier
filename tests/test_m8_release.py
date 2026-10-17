@@ -1,7 +1,8 @@
 import json, os, subprocess, sys, tempfile, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-PY=ROOT/".venv"/"Scripts"/"python.exe"
+PY=Path(sys.executable)
+CHECKER=ROOT/".tools"/"carcara-current"
 
 class ReleaseCLITests(unittest.TestCase):
     def run_cli(self,*args):
@@ -23,8 +24,10 @@ class ReleaseCLITests(unittest.TestCase):
     def test_synthesis_and_repair(self):
         self.assertEqual(self.run_cli("synthesize").returncode,0)
         self.assertEqual(self.run_cli("repair").returncode,0)
+    @unittest.skipUnless(CHECKER.is_file(), "pinned Carcara not installed; V3 not validated")
     def test_doctor_reports_v3(self):
         p=self.run_cli("doctor"); self.assertEqual(p.returncode,0,p.stderr); self.assertTrue(json.loads(p.stdout)["v3_ready"])
+    @unittest.skipUnless(CHECKER.is_file(), "pinned Carcara not installed; V3 not validated")
     def test_check_proof_uses_committed_bundle(self):
         p=self.run_cli("check-proof","proofs/second_price_dsic","--source","examples/second_price.epl","--property","dsic","--json")
         self.assertEqual(p.returncode,0,p.stderr); result=json.loads(p.stdout)
@@ -36,7 +39,17 @@ class ReleaseCLITests(unittest.TestCase):
     def test_representative_reproduction(self):
         env=dict(os.environ); env["PYTHONPATH"]=str(ROOT/"src")
         p=subprocess.run([str(PY),"-m","epv.reproduce"],cwd=ROOT,text=True,capture_output=True,env=env)
-        self.assertEqual(p.returncode,0,p.stderr); self.assertEqual(json.loads(p.stdout)["status"],"PASS")
+        result=json.loads(p.stdout)
+        if CHECKER.is_file():
+            self.assertEqual(p.returncode,0,p.stderr); self.assertEqual(result["status"],"PASS")
+        else:
+            # Missing independent checking must keep full reproduction failed.
+            self.assertEqual(p.returncode,1,p.stderr)
+            self.assertEqual(result["status"],"FAIL")
+            self.assertEqual(result["checks"]["v3_second_price_dsic"],"ERROR")
+            self.assertEqual(result["checks"]["v2_cvc5"],"UNSAT")
+            self.assertEqual(result["checks"]["v2_z3"],"UNSAT")
+            self.assertEqual(result["checks"]["counterexample_replay"],"PASS")
 
 class ReleaseManifestTests(unittest.TestCase):
     def test_property_registry_matches_core(self):

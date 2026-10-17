@@ -1,3 +1,4 @@
 proofs/**/*.smt2 -text
 proofs/**/*.alethe -text
 output/**/*.pdf -text
+*.sh text eol=lf
